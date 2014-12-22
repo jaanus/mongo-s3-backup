@@ -27,14 +27,10 @@ exec "mongodump -d " + config.db_name, (error, stdout, stderr) ->
       console.log "Error compressing the dump: ", dump_error
       return
 
-    console.log "archive name is", archiveName
     readStream = fs.createReadStream(archiveName)
-
-    console.log "arhcive name", archiveName
     prefixed_archiveName = archiveName
     if config.aws_bucket_path
       prefixed_archiveName = config.aws_bucket_path + archiveName
-    console.log "uploading to", prefixed_archiveName
 
     params =
       Key: prefixed_archiveName
@@ -42,13 +38,10 @@ exec "mongodump -d " + config.db_name, (error, stdout, stderr) ->
 
     s3bucket = new AWS.S3({params: { Bucket: config.aws_bucket }})
 
-    s3bucket.upload params, (err, data) ->
-      if err
-        console.log "upload error", err
+    s3bucket.upload params, (upload_err, data) ->
+      if upload_err
+        console.log "Error uploading to S3:", upload_err
       else
-        console.log "uploaded data."
-
-
-    exec "rm " + archiveName, (rm_error, rm_stdout, rm_stderr) ->
-      exec "rm -rf dump", (rm2_error, rm2_stdout, rm2_stderr) ->
-        console.log "Done."
+        exec "rm " + archiveName, (rm_error, rm_stdout, rm_stderr) ->
+          exec "rm -rf dump", (rm2_error, rm2_stdout, rm2_stderr) ->
+            return
