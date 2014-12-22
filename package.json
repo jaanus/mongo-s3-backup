@@ -1,0 +1,11 @@
+{
+  "name": "mongo-s3-backup",
+  "dependencies": {
+    "aws-sdk": "^2.1.4",
+    "string": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaanus/mongo-s3-backup"
+  }
+}
