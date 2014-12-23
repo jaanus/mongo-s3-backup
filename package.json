@@ -2,6 +2,7 @@
   "name": "mongo-s3-backup",
   "dependencies": {
     "aws-sdk": "^2.1.4",
+    "coffee-script": "^1.8.0",
     "string": "^3.0.0"
   },
   "repository": {
