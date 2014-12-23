@@ -13,4 +13,11 @@ As discussed in [MongoDB docs](http://docs.mongodb.org/manual/core/backups/#back
 * Edit the config.
 * You can now run the script.
 
-tbd … installing in cron.
+## Running in crontab
+
+Here’s an example of how I run this in crontab every 6 hours.
+
+    PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+    SHELL = /bin/bash
+    NODE_ENV = production
+    0 0,6,12,18 * * * /path/to/coffee /path/to/backup.coffee >> /path/to/backup.log
