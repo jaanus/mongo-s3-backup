@@ -2,8 +2,9 @@
 
 This is a very simple Node script that does two things:
 
-* Dumps a MongoDB database with `mongodump`.
-* Compresses and uploads the result into S3 as a timestamped backup.
+* Dumps a MongoDB database with `mongodump`, …
+* … compresses and uploads the dump into S3 as a timestamped backup, and/or …
+* … saves the dump in a local folder.
 
 As discussed in [MongoDB docs](http://docs.mongodb.org/manual/core/backups/#backup-with-mongodump), dumping with `mongodump` may have a performance impact. In higher-traffic services, you may not want to use this.
 

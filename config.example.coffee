@@ -7,6 +7,8 @@ module.exports =
     # Mongo database name
     db_name: "dev_database"
 
+    backup_to_aws: true
+
     # AWS setup
     aws_region: "eu-west-1"
     aws_access_key_id: "your-access-key"
@@ -15,3 +17,7 @@ module.exports =
 
     # Optional path in the bucket. May be omitted to upload to the root of the bucket.
     aws_bucket_path: "your-folder"
+
+    # Local path backup setup
+    backup_to_local_path: true
+    local_path: '/example/backups/folder'
